@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.4);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%);
+  z-index: 0;
+}
+
+nav {
+  width: 100%;
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+nav .logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: white;
+}
+
+nav .logo span {
+  color: #00ffff;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #00ffff;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.content h1 {
+  font-size: 3.5rem;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 20px;
+}
+
+.content h1 span {
+  color: #00ffff;
+}
+
+.content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn {
+  padding: 15px 30px;
+  background: #00ffff;
+  color: black;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 20px #00ffff;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: transparent;
+  color: #00ffff;
+  border: 2px solid #00ffff;
+}
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.2em;
+    }
+
+    .glass-container,
+    .form-box,
+    .dashboard-box {
+        width: 100% !important;
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+
+    .form-box input,
+    .form-box button,
+    button,
+    input {
+        width: 100% !important;
+        font-size: 1em;
+    }
+
+    nav, header, footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ai-box,
+    .card,
+    .container {
+        width: 100% !important;
+        margin: 0 auto;
+    }
+}

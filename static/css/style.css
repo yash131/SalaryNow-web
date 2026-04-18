@@ -1,0 +1,123 @@
+/* General Body Styling */
+body {
+  font-family: 'Orbitron', sans-serif; /* Futuristic font */
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Dark gradient */
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Futuristic Button */
+button {
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.6), 0 0 30px rgba(58, 123, 213, 0.6);
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.8), 0 0 50px rgba(58, 123, 213, 0.8);
+}
+
+/* Futuristic Card */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Futuristic Text Glow */
+h1, h2, h3 {
+  color: #00d2ff;
+  text-shadow: 0 0 10px #00d2ff, 0 0 20px #00d2ff, 0 0 40px #00d2ff;
+}
+
+/* Animated Border Effect */
+.futuristic-border {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  text-transform: uppercase;
+  overflow: hidden;
+  border: 2px solid #00d2ff;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.futuristic-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.5), transparent);
+  transition: 0.5s;
+}
+
+.futuristic-border:hover::before {
+  left: 100%;
+}
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.2em;
+    }
+
+    .glass-container,
+    .form-box,
+    .dashboard-box {
+        width: 100% !important;
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+
+    .form-box input,
+    .form-box button,
+    button,
+    input {
+        width: 100% !important;
+        font-size: 1em;
+    }
+
+    nav, header, footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ai-box,
+    .card,
+    .container {
+        width: 100% !important;
+        margin: 0 auto;
+    }
+}

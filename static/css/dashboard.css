@@ -1,0 +1,218 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  background: #0f0f0f;
+  font-family: 'Urbanist', sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.glass-header {
+  width: 90%;
+  max-width: 1000px;
+  padding: 20px 30px;
+  background: #1c1c1c;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+}
+
+.glass-card {
+  width: 90%;
+  max-width: 1000px;
+  background: #1e1e1e;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  border: 1px solid #2a2a2a;
+}
+
+.form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-card input, .form-card button {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+.form-card input {
+  background: #2b2b2b;
+  color: white;
+}
+
+.form-card button {
+  background: cyan;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-card button:hover {
+  background: black;
+  color: cyan;
+  border: 1px solid cyan;
+}
+
+.requests-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.requests-card li {
+  margin: 15px 0;
+  background: #262626;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.status.pending {
+  background-color: orange;
+}
+
+.status.approved {
+  background-color: limegreen;
+}
+
+.status.rejected {
+  background-color: red;
+}
+
+.logout {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  background: #2e2e2e;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.logout:hover {
+  background: red;
+  color: white;
+}
+.ai-assistant {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.2);
+  z-index: 1000;
+  font-family: 'Urbanist', sans-serif;
+}
+
+.ai-assistant h3 {
+  margin-bottom: 10px;
+  color: cyan;
+  font-size: 18px;
+}
+
+#ai-form {
+  display: flex;
+  gap: 8px;
+}
+
+#ai-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #2b2b2b;
+  color: white;
+}
+
+#ai-form button {
+  padding: 10px;
+  background: cyan;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+}
+
+#ai-form button:hover {
+  background: black;
+  color: cyan;
+  border: 1px solid cyan;
+}
+
+#ai-response {
+  margin-top: 10px;
+  color: white;
+  font-size: 14px;
+  line-height: 1.4;
+}
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.2em;
+    }
+
+    .glass-container,
+    .form-box,
+    .dashboard-box {
+        width: 100% !important;
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+
+    .form-box input,
+    .form-box button,
+    button,
+    input {
+        width: 100% !important;
+        font-size: 1em;
+    }
+
+    nav, header, footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ai-box,
+    .card,
+    .container {
+        width: 100% !important;
+        margin: 0 auto;
+    }
+}

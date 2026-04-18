@@ -1,0 +1,128 @@
+/* Color Palette */
+:root {
+  --primary-color: #00ffff;
+  --background-color: rgba(0, 0, 0, 0.6);
+  --overlay-color: rgba(0, 0, 0, 0.8);
+  --text-color: white;
+  --input-background: #222;
+  --input-border: #444;
+}
+
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--overlay-color);
+  z-index: -1;
+}
+
+.signup-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+  padding: 30px;
+  transform: translate(-50%, -50%);
+  background: var(--background-color);
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 25px var(--primary-color);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.signup-container:hover {
+  transform: translate(-50%, -50%) scale(1.02);
+}
+
+.signup-container h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.signup-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 8px;
+  background: var(--input-background);
+  color: var(--text-color);
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+.signup-container input:focus {
+  background: #333;
+  outline: none;
+  border: 2px solid var(--primary-color);
+}
+
+.signup-container button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--primary-color);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.signup-container button:hover {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.signup-container a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signup-container a:hover {
+  color: #fff;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .signup-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .signup-container h2 {
+    font-size: 2rem;
+  }
+
+  body {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      background: #000000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Animated gradient background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(270deg, #0ff, #a0f, #0ff, #f0f, #0ff);
+      background-size: 1000% 1000%;
+      animation: gradientAnimation 20s ease infinite;
+      z-index: -3;
+      filter: brightness(0.5) contrast(1.2);
+    }
+    @keyframes gradientAnimation {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Splash Screen */
+    #splash {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 1;
+      animation: splashFadeOut 1s forwards;
+      animation-delay: 4s; /* splash duration */
+    }
+
+    /* Logo style */
+    #splash-logo {
+      width: 200px;
+      height: auto;
+      animation: logoAnimation 4s ease forwards;
+    }
+
+    @keyframes logoAnimation {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes splashFadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* Login box styling */
+    .login-box {
+      position: relative;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 30px 40px 36px;
+      border-radius: 15px;
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.6),
+        inset 0 0 40px rgba(0, 255, 255, 0.12);
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      transition: transform 0.3s ease;
+      color: #c0f6ff;
+      user-select: none;
+      z-index: 1;
+      opacity: 0; /* Initially hidden */
+      animation: fadeIn 1s forwards;
+      animation-delay: 5s; /* After splash fade out */
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .login-box h2 {
+      margin-bottom: 18px;
+      font-size: 2rem;
+      color: #00fff7;
+      text-shadow: 0 0 14px #00fff7aa;
+      user-select: text;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #c0f6ff;
+      font-size: 1.1rem;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    input::placeholder {
+      color: rgba(192, 246, 255, 0.6);
+      font-style: italic;
+    }
+    input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 10px #00fff7;
+      color: #defcff;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 0;
+      margin-top: 16px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #00fff7, #00c3ff);
+      color: #002d33;
+      font-weight: 900;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 0 24px #00dfffcc;
+      transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    button:hover,
+    button:focus {
+      background: linear-gradient(135deg, #00d2df, #0099bb);
+      box-shadow: 0 0 36px #00eaffee;
+      color: #e0ffff;
+      outline: none;
+      transform: translateY(-3px);
+    }
+
+    .error {
+      color: #ff5370;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-shadow: 0 0 6px #ff5370cc;
+      user-select: text;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 14px 0 6px;
+      color: #90f6ffcc;
+      user-select: none;
+    }
+    .remember-me input {
+      margin-right: 10px;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      accent-color: #00fff7;
+      border-radius: 6px;
+      border: 1px solid #00b3b3;
+      transition: all 0.3s ease;
+    }
+    .remember-me input:hover {
+      box-shadow: 0 0 10px #00fff7cc;
+    }
+
+    .toggle-password {
+      cursor: pointer;
+      color: #00c3ff;
+      font-weight: 700;
+      margin-left: 8px;
+      user-select: none;
+      position: absolute;
+      right: 56px;
+      top: 165px;
+      font-size: 1.1rem;
+      transition: color 0.2s ease;
+    }
+    .toggle-password:hover {
+      color: #00fff7;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 460px) {
+      .login-box {
+        padding: 28px 28px 34px;
+        max-width: 90vw;
+      }
+      .toggle-password {
+        top: 155px;
+        right: 44px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="splash">
+    <img id="splash-logo" src="https://placehold.co/200x80?text=Admin+Logo" alt="Admin Logo" />
+  </div>
+
+  <form method="POST" class="login-box" id="login-form" aria-label="Admin login form" novalidate>
+    <h2>Admin Login</h2>
+    {% if error %}
+      <div class="error" role="alert">{{ error }}</div>
+    {% endif %}
+    <input 
+      type="text" 
+      name="username" 
+      placeholder="Admin Username" 
+      required 
+      aria-required="true" 
+      aria-label="Admin Username"
+      autocomplete="username"
+    />
+    <input 
+      type="password" 
+      name="password" 
+      id="password" 
+      placeholder="Password" 
+      required 
+      aria-required="true" 
+      aria-label="Password"
+      autocomplete="current-password"
+    />
+    <span id="toggle-password" class="toggle-password" role="button" tabindex="0" aria-label="Toggle password visibility" title="Toggle password visibility">👁️</span>
+
+    <div class="remember-me">
+      <input type="checkbox" id="remember-me" name="remember-me" aria-label="Remember Me" />
+      <label for="remember-me">Remember Me</label>
+    </div>
+
+    <button type="submit">Login</button>
+    <div id="loading" class="loading" role="status" aria-live="polite" aria-hidden="true" style="display:none;">Logging in...</div>
+  </form>
+
+  <div class="particles" aria-hidden="true"></div>
+
+  <script>
+    // Password toggle
+    const togglePassword = document.getElementById('toggle-password');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
+    });
+    togglePassword.addEventListener('keydown', event => {
+      if(event.key === 'Enter' || event.key === ' '){
+        event.preventDefault();
+        togglePassword.click();
+      }
+    });
+
+    // Show loading on form submit
+    const form = document.getElementById('login-form');
+    const loading = document.getElementById('loading');
+    form.addEventListener('submit', () => {
+      loading.style.display = 'block';
+    });
+
+    // Floating particles creation and animation
+    const particlesContainer = document.querySelector('.particles');
+    const particleCount = 30;
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+
+      // Random size category
+      const sizeClass = ['small', 'medium', 'large'][Math.floor(Math.random() * 3)];
+      particle.classList.add(sizeClass);
+
+      // Random horizontal start position
+      particle.style.left = `${Math.random() * 100}vw`;
+
+      // Random animation delay & duration for natural effect
+      const delay = Math.random() * 20;
+      const duration = 15 + Math.random() * 20;
+      particle.style.animationDelay = delay + 's';
+      particle.style.animationDuration = duration + 's';
+
+      particlesContainer.appendChild(particle);
+    }
+
+    for(let i=0; i < particleCount; i++){
+      createParticle();
+    }
+  </script>
+
+</body>
+</html>
